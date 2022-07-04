@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "RentX",
+    "slug": "RentX",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

@@ -79,4 +79,15 @@ font-size: ${RFValue(15)}px;
 text-align: justify;
 
 margin-top: 23px;
+line-height: 25px;
+`;
+
+export const Acessories = styled.View`
+width: 100%;
+
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+margin-top: 16px;
 `;

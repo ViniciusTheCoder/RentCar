@@ -1,4 +1,4 @@
-# RentCar 🚗
+# RentX 🚗
 
 ## Status: Developing ⚙️
 

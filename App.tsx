@@ -20,7 +20,7 @@ import { CarDetails } from './src/screens/CarDetails';
 
 import theme from './src/styles/theme';
 
-export function App() {
+export default function App() {
   SplashScreen.preventAutoHideAsync();
   const [fontsLoaded] = useFonts({
     Inter_400Regular,

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BackButton } from "../../components/BackButton";
+
 
 import {
     Container,
@@ -14,9 +14,13 @@ import {
     Footer
 } from './styles';
 
+import { Button } from "../../components/Button";
+import { Calendar } from "../../components/Calendar";
+import { BackButton } from "../../components/BackButton";
+
 import ArrowSvg from '../../assets/arrow.svg';
 import { StatusBar } from "react-native";
-import { Button } from "../../components/Button";
+
 
 export function Schedules() {
     return (
@@ -49,6 +53,8 @@ export function Schedules() {
             </Header>
 
             <Content>
+
+                <Calendar />
 
             </Content>
 

@@ -16,7 +16,7 @@ import {
   Archivo_600SemiBold
 } from '@expo-google-fonts/archivo';
 
-import { ScheduleDetails } from './src/screens/ScheduleDetails';
+import { ScheduleComplete } from './src/screens/ScheduleComplete';
 
 import theme from './src/styles/theme';
 
@@ -39,7 +39,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ScheduleDetails />
+      <ScheduleComplete />
     </ThemeProvider>
   );
 }

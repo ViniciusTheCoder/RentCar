@@ -1,6 +1,5 @@
 import React from "react";
-
-
+import { useNavigation, NavigationProp, ParamListBase } from "@react-navigation/native";
 
 import {
     Container,
@@ -22,7 +21,13 @@ import ArrowSvg from '../../assets/arrow.svg';
 import { StatusBar } from "react-native";
 
 
+
 export function Schedules() {
+    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+
+    function handleConfirmDate() {
+        navigation.navigate('ScheduleDetails')
+    }
     return (
         <Container>
             <Header>
@@ -60,7 +65,7 @@ export function Schedules() {
 
             <Footer>
                 <Button
-                    title="Confirmar" />
+                    title="Confirmar" onPress={handleConfirmDate} />
             </Footer>
         </Container>
     )

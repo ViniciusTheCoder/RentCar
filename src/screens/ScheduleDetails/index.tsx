@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation, NavigationProp, ParamListBase } from "@react-navigation/native";
 
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from "react-native-responsive-fontsize";
@@ -43,6 +44,11 @@ import {
 
 
 export function ScheduleDetails() {
+    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+
+    function handleConfirmRental() {
+        navigation.navigate('ScheduleComplete')
+    }
     return (
         <Container>
             <Header>
@@ -111,7 +117,7 @@ export function ScheduleDetails() {
             </Content>
 
             <Footer>
-                <Button title={"Confirmar"} />
+                <Button title={"Alugar agora"} color={'#03B252'} onPress={handleConfirmRental} />
             </Footer>
 
         </Container>

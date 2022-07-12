@@ -1,5 +1,6 @@
 import React from 'react';
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, StatusBar } from 'react-native';
+import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 
 import {
     Container,
@@ -16,8 +17,18 @@ import { OkButton } from '../../components/OkButton';
 
 export function ScheduleComplete() {
     const { width } = useWindowDimensions();
+    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+
+    function handleRentalDone() {
+        navigation.navigate('Home')
+    }
     return (
         <Container>
+            <StatusBar
+                barStyle={"light-content"}
+                translucent
+                backgroundColor={"transparent"}
+            />
             <LogoSvg width={width} />
 
             <Content>
@@ -29,7 +40,7 @@ export function ScheduleComplete() {
             </Content>
 
             <Footer>
-                <OkButton title='Ok' />
+                <OkButton title='OK' onPress={handleRentalDone} />
             </Footer>
 
         </Container>

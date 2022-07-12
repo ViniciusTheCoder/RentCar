@@ -1,7 +1,13 @@
+import { ReactNode } from "react";
+import { RectButton } from "react-native-gesture-handler";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+type CardButtonProps = {
+    children: ReactNode
+}
+
+export const Container = styled(RectButton) <CardButtonProps>`
 width: 100%;
 height: 126px;
 

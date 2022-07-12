@@ -2,12 +2,13 @@ import styled from 'styled-components/native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 import { ReactNode } from 'react';
+import { RectButton } from 'react-native-gesture-handler';
 
 type ScheduleButtonProps = {
     children: ReactNode
 }
 
-export const Container = styled.View<ScheduleButtonProps>`
+export const Container = styled(RectButton) <ScheduleButtonProps>`
 width: 80px;
 height: 56px;
 

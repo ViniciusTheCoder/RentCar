@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RectButtonProps } from 'react-native-gesture-handler';
+import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 
 import {
     Container,
@@ -17,7 +17,7 @@ export function OkButton({
     ...rest
 }: Props) {
     return (
-        <Container {...rest}>
+        <Container {...rest} >
             <Title>{title}</Title>
 
         </Container>

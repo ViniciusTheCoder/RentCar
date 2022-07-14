@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation, NavigationProp, ParamListBase } from "@react-navigation/native";
 
 import {
@@ -14,7 +14,7 @@ import {
 } from './styles';
 
 import { Button } from "../../components/Button";
-import { Calendar } from "../../components/Calendar";
+import { Calendar, DayProps } from "../../components/Calendar";
 import { BackButton } from "../../components/BackButton";
 
 import ArrowSvg from '../../assets/arrow.svg';
@@ -23,11 +23,30 @@ import { StatusBar } from "react-native";
 
 
 export function Schedules() {
+    const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>({} as DayProps);
     const navigation = useNavigation<NavigationProp<ParamListBase>>();
 
     function handleConfirmDate() {
         navigation.navigate('ScheduleDetails')
     }
+
+    function handleBack() {
+        navigation.goBack();
+    }
+
+    function handleChangeDate(date: DayProps) {
+        let start = !lastSelectedDate.timestamp ? date : lastSelectedDate;
+        let end = date;
+
+        if (start.timestamp > end.timestamp) {
+            start = end;
+            end = start;
+        }
+
+        setLastSelectedDate(end);
+        const interval = 
+    };
+
     return (
         <Container>
             <Header>
@@ -36,7 +55,7 @@ export function Schedules() {
                     translucent
                     backgroundColor={"transparent"}
                 />
-                <BackButton onPress={() => { }} color={"#E1E1E8"} />
+                <BackButton onPress={handleBack} color={"#E1E1E8"} />
                 <Title>Escolha uma {'\n'}
                     data de início e {'\n'}
                     fim do aluguel
@@ -59,7 +78,10 @@ export function Schedules() {
 
             <Content>
 
-                <Calendar />
+                <Calendar
+                    markedDate={ }
+                    onDayPress={handleChangeDate}
+                />
 
             </Content>
 

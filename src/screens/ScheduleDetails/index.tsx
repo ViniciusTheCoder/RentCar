@@ -61,14 +61,14 @@ export function ScheduleDetails() {
     const rentTotal = Number(dates.length * car.rent.price)
 
     async function handleConfirmRental() {
-        const schedulesByCar = await api.get(`/schedules${car.id}`);
+        const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
 
         const unavailable_dates = [
             ...schedulesByCar.data.unavailable_dates,
             ...dates,
         ];
 
-        api.put(`/schedules${car.id}`, {
+        api.put(`/schedules_bycars/${car.id}`, {
             id: car.id,
             unavailable_dates
         }).then(() => navigation.navigate('ScheduleComplete'))

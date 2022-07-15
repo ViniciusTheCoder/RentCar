@@ -48,11 +48,17 @@ export function ScheduleDetails() {
 
     function handleConfirmRental() {
         navigation.navigate('ScheduleComplete')
+
     }
+
+    function handleBack() {
+        navigation.goBack();
+    }
+
     return (
         <Container>
             <Header>
-                <BackButton onPress={() => { }} color={""} />
+                <BackButton onPress={handleBack} color={"#E1E1E8"} />
 
             </Header>
             <CarImages>

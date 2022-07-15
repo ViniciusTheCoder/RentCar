@@ -3,6 +3,7 @@ import React from "react";
 import { Feather } from '@expo/vector-icons';
 
 import { ptBR } from "./localeConfig";
+import { generateInterval } from "./generateInterval";
 
 import {
     Calendar as CustomCalendar,
@@ -18,7 +19,7 @@ interface MarkedDatesProps {
         color: string;
         textColor: string;
         disabled?: boolean;
-        disableTouchEvent: boolean;
+        disableTouchEvent?: boolean;
     },
 }
 
@@ -78,5 +79,6 @@ function Calendar({ markedDates, onDayPress }: CalendarProps) {
 export {
     Calendar,
     MarkedDatesProps,
-    DayProps
+    DayProps,
+    generateInterval
 }

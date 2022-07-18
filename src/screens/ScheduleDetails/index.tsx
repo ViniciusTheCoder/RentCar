@@ -53,8 +53,10 @@ interface RentalPeriod {
 }
 
 export function ScheduleDetails() {
+    const [loading, setLoading] = useState(false);
     const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
     const navigation = useNavigation<NavigationProp<ParamListBase>>();
+
     const route = useRoute();
     const { car, dates } = route.params as Params;
 
@@ -80,7 +82,10 @@ export function ScheduleDetails() {
                 id: car.id,
                 unavailable_dates
             }).then(() => navigation.navigate('ScheduleComplete'))
-                .catch(() => Alert.alert('Não foi possível confirmar o agendamento'))
+                .catch(() => {
+                    setLoading(false)
+                    Alert.alert('Não foi possível confirmar o agendamento');
+                });
         }
     }
 
@@ -165,7 +170,13 @@ export function ScheduleDetails() {
             </Content>
 
             <Footer>
-                <Button title={"Alugar agora"} color={'#03B252'} onPress={handleConfirmRental} />
+                <Button
+                    title={"Alugar agora"}
+                    color={'#03B252'}
+                    onPress={handleConfirmRental}
+                    enabled={!loading}
+                    loading={loading}
+                />
             </Footer>
 
         </Container>

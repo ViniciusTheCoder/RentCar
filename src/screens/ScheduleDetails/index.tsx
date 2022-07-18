@@ -61,23 +61,27 @@ export function ScheduleDetails() {
     const rentTotal = Number(dates.length * car.rent.price)
 
     async function handleConfirmRental() {
-        const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
+        {
+            const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
 
-        const unavailable_dates = [
-            ...schedulesByCar.data.unavailable_dates,
-            ...dates,
-        ];
+            const unavailable_dates = [
+                ...schedulesByCar.data.unavailable_dates,
+                ...dates,
+            ];
 
-        await api.post('schedules_byuser', {
-            user_id: 1,
-            car
-        })
+            await api.post('schedules_byuser', {
+                user_id: 1,
+                car,
+                startDate: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
+                endDate: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
+            })
 
-        api.put(`/schedules_bycars/${car.id}`, {
-            id: car.id,
-            unavailable_dates
-        }).then(() => navigation.navigate('ScheduleComplete'))
-            .catch(() => Alert.alert('Não foi possível confirmar o agendamento'))
+            api.put(`/schedules_bycars/${car.id}`, {
+                id: car.id,
+                unavailable_dates
+            }).then(() => navigation.navigate('ScheduleComplete'))
+                .catch(() => Alert.alert('Não foi possível confirmar o agendamento'))
+        }
     }
 
     function handleBack() {

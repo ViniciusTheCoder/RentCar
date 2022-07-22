@@ -16,7 +16,7 @@ export function StackRoutes() {
     return (
         <Navigator screenOptions={{ headerShown: false }} initialRouteName={'Splash'}>
             <Screen name="Splash" component={Splash} />
-            <Screen name="Home" component={Home} />
+            <Screen name="Home" component={Home} options={{ gestureEnabled: false }} />
             <Screen name="CarDetails" component={CarDetails} />
             <Screen name="Schedules" component={Schedules} />
             <Screen name="ScheduleComplete" component={ScheduleComplete} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StatusBar, StyleSheet } from "react-native";
+import { StatusBar, StyleSheet, BackHandler } from "react-native";
 import { useNavigation, NavigationProp, ParamListBase } from "@react-navigation/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import Animated, { useSharedValue, useAnimatedStyle, useAnimatedGestureHandler, withSpring } from "react-native-reanimated";
@@ -80,6 +80,12 @@ export function Home() {
         searchCars();
     }, []);
 
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', () => {
+            return true
+        })
+    }, [])
+
     return (
         <Container>
             <StatusBar
@@ -93,10 +99,12 @@ export function Home() {
                         width={RFValue(108)}
                         heigt={RFValue(12)}
                     />
-
-                    <TotalCars>
-                        Total de {cars.length} carros
-                    </TotalCars>
+                    {
+                        !loading &&
+                        <TotalCars>
+                            Total de {cars.length} carros
+                        </TotalCars>
+                    }
                 </HeaderContent>
             </Header>
 

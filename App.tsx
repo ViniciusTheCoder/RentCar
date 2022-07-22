@@ -3,6 +3,7 @@ import React from 'react';
 import 'react-native-gesture-handler';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { LogBox } from 'react-native';
 
 import * as SplashScreen from 'expo-splash-screen';
 
@@ -34,6 +35,10 @@ export default function App() {
     Archivo_600SemiBold
 
   });
+
+  LogBox.ignoreLogs([
+    'ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from \'deprecated-react-native-prop-types\'.'
+  ])
 
   if (!fontsLoaded) {
     return null

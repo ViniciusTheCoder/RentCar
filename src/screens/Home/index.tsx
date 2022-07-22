@@ -8,7 +8,7 @@ import { RectButton, PanGestureHandler } from "react-native-gesture-handler";
 import { Ionicons } from '@expo/vector-icons';
 
 import { Car } from "../../components/Car";
-import { Loading } from "../../components/Loading";
+import { LoadAnimation } from "../../components/LoadAnimation";
 
 import {
     Container,
@@ -108,7 +108,7 @@ export function Home() {
                 </HeaderContent>
             </Header>
 
-            {loading ? <Loading /> :
+            {loading ? <LoadAnimation /> :
 
                 <CarList
                     data={cars}

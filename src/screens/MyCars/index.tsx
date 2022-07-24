@@ -52,6 +52,7 @@ export function MyCars() {
             } finally {
                 setIsLoading(false)
             }
+            fetchCars()
         }
     }, [])
 

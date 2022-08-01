@@ -1,11 +1,15 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native';
+import { BorderlessButton } from 'react-native-gesture-handler';
+import { ReactNode } from 'react';
+
+interface BorderlessButtonProps {
+    children: ReactNode
+}
 
 export const Container = styled.View`
 flex-direction: row;
-
-margin-bottom: 8px;
 `;
 
 export const IconContainer = styled.View`
@@ -27,3 +31,5 @@ font-family: ${({ theme }) => theme.fonts.primary_400};
 font-size: ${RFValue(15)}px;
 padding-left: 23px;
 `;
+
+export const ChangePasswordVisibilityButton = styled(BorderlessButton) <BorderlessButtonProps>``;

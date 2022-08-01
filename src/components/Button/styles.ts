@@ -21,6 +21,7 @@ align-items: center;
 justify-content: center;
 
 background-color: ${({ color }) => color};
+margin-bottom: 8px;
 `;
 
 export const Title = styled.Text<ButtonTextProps>`

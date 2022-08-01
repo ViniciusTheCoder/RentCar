@@ -20,6 +20,11 @@ font-family: ${({ theme }) => theme.fonts.secondary_600};
 color: ${({ theme }) => theme.colors.title};
 `;
 
+export const Form = styled.View`
+width: 100%;
+margin: 64px 0;
+`;
+
 export const Subtitle = styled.Text`
 font-size: ${RFValue(15)}px;
 font-family: ${({ theme }) => theme.fonts.primary_400};

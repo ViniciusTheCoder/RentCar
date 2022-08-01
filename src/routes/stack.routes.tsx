@@ -2,6 +2,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { SignIn } from "../screens/SignIn";
 import { Home } from "../screens/Home";
 import { CarDetails } from "../screens/CarDetails";
 import { Schedules } from "../screens/Schedules";
@@ -14,8 +15,8 @@ const { Navigator, Screen } = createNativeStackNavigator();
 
 export function StackRoutes() {
     return (
-        <Navigator screenOptions={{ headerShown: false }} initialRouteName={'Splash'}>
-            <Screen name="Splash" component={Splash} />
+        <Navigator screenOptions={{ headerShown: false }} initialRouteName={'SignIn'}>
+            <Screen name="SignIn" component={SignIn} />
             <Screen name="Home" component={Home} options={{ gestureEnabled: false }} />
             <Screen name="CarDetails" component={CarDetails} />
             <Screen name="Schedules" component={Schedules} />

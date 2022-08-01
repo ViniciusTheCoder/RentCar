@@ -52,8 +52,8 @@ export function MyCars() {
             } finally {
                 setIsLoading(false)
             }
-            fetchCars()
         }
+        fetchCars()
     }, [])
 
     function handleBack() {

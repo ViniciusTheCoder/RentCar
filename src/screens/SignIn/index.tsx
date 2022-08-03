@@ -1,3 +1,4 @@
+import { useNavigation, NavigationProp, ParamListBase, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 
 import {
@@ -29,6 +30,8 @@ import {
 export function SignIn() {
     const [email, setEmail] = useState<any>();
     const [password, setPassword] = useState<any>();
+    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+    const route = useRoute();
 
     async function handleSignIn() {
         try {
@@ -49,6 +52,10 @@ export function SignIn() {
                 Alert.alert('Erro na autenticação', 'Ocorreu um erro ao realizar logins, verifique as credenciais')
             }
         }
+    }
+
+    function handleSignUp() {
+        navigation.navigate('FirstStep')
     }
 
     return (
@@ -101,7 +108,7 @@ export function SignIn() {
                             title='Criar conta gratuita'
                             color={theme.colors.success}
                             light
-                            onPress={() => { }}
+                            onPress={handleSignUp}
                             enabled={true}
                             loading={false}
                         />

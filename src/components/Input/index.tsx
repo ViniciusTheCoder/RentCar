@@ -34,8 +34,8 @@ export function Input({
     }
 
     return (
-        <Container isFocused={focused}>
-            <IconContainer>
+        <Container>
+            <IconContainer isFocused={focused}>
                 <Feather
                     name={iconName}
                     size={24}
@@ -46,6 +46,7 @@ export function Input({
             <InputText
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
+                isFocused={focused}
                 {...rest}
             />
 

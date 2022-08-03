@@ -1,4 +1,5 @@
 import React from "react";
+import { RectButtonProps } from "react-native-gesture-handler";
 
 import { ActivityIndicator } from "react-native";
 
@@ -7,11 +8,9 @@ import {
     Title
 } from './styles';
 
-interface Props {
+interface Props extends RectButtonProps {
     title: string;
     color?: string;
-    onPress: () => void;
-    enabled?: boolean;
     loading?: boolean;
     light?: boolean
 }

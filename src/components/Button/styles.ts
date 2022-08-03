@@ -4,7 +4,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { ReactNode } from "react";
 
-interface ButtonProps extends RectButtonProps {
+interface ButtonProps {
     color?: string;
     children: ReactNode
 }

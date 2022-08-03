@@ -1,6 +1,6 @@
 # RentX 🚗
 
-## Status: Developing ✅
+## Status: Developing ⚙️
 
 ## Functions:
 - The goals of this mobile app is rent expansive cars with a few touches on the screen

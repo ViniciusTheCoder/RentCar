@@ -4,8 +4,10 @@ import { TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from 'react-
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
-import { Input } from '../../../components/Input';
+import { InputPassword } from '../../../components/InputPassword';
 import { Button } from '../../../components/Button';
+
+import theme from '../../../styles/theme';
 
 import {
     Container,
@@ -18,16 +20,12 @@ import {
 }
     from './styles';
 
-export function FirstStep() {
+export function SecondStep() {
 
-    const navigation = useNavigation<any>();
+    const navigation = useNavigation();
 
     function handleGoBack() {
         navigation.goBack();
-    }
-
-    function handleFirstStepDone() {
-        navigation.navigate('SecondStep')
     }
 
     return (
@@ -48,26 +46,20 @@ export function FirstStep() {
                     <Subtitle>Faça seu cadastro de {'\n'}forma rápida e fácil</Subtitle>
 
                     <Form>
-                        <FormTitle>1. Dados</FormTitle>
-                        <Input
-                            iconName='user'
-                            placeholder='Nome'
+                        <FormTitle>2. Senha</FormTitle>
+                        <InputPassword
+                            iconName='lock'
+                            placeholder='Senha'
                         />
-                        <Input
-                            iconName='mail'
-                            placeholder='Email'
-                            keyboardType='email-address'
-                        />
-                        <Input
-                            iconName='credit-card'
-                            placeholder='CNH'
-                            keyboardType='numeric'
+                        <InputPassword
+                            iconName='lock'
+                            placeholder='Confirmar senha'
                         />
                     </Form>
 
                     <Button
-                        title='Próximo'
-                        onPress={handleFirstStepDone}
+                        title='Cadastrar'
+                        color={theme.colors.success}
                     />
 
                 </Container>

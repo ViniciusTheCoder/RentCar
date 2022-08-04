@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from 'react-native';
+import React, { useState } from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Alert } from 'react-native';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
@@ -20,12 +20,34 @@ import {
 }
     from './styles';
 
-export function SecondStep() {
+interface Params {
+    user: {
+        name: string;
+        email: string;
+        driverLicence: string;
+    }
+}
 
+export function SecondStep() {
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
     const navigation = useNavigation();
+    const route = useRoute();
+
+    const { user } = route.params as Params;
 
     function handleGoBack() {
         navigation.goBack();
+    }
+
+    function handleRegister() {
+        if (!password || !passwordConfirm) {
+            return Alert.alert('Informe a sua senha e confirme.');
+        }
+
+        if (password != passwordConfirm) {
+            return Alert.alert('As senhas digitadas são diferentes.');
+        }
     }
 
     return (
@@ -50,16 +72,21 @@ export function SecondStep() {
                         <InputPassword
                             iconName='lock'
                             placeholder='Senha'
+                            onChangeText={setPassword}
+                            value={password}
                         />
                         <InputPassword
                             iconName='lock'
                             placeholder='Confirmar senha'
+                            onChangeText={setPasswordConfirm}
+                            value={passwordConfirm}
                         />
                     </Form>
 
                     <Button
                         title='Cadastrar'
                         color={theme.colors.success}
+                        onPress={handleRegister}
                     />
 
                 </Container>

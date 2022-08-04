@@ -81,7 +81,11 @@ export function ScheduleDetails() {
             api.put(`/schedules_bycars/${car.id}`, {
                 id: car.id,
                 unavailable_dates
-            }).then(() => navigation.navigate('ScheduleComplete'))
+            }).then(() => navigation.navigate('Confirmation', {
+                nextScreenRoute: 'MyCars',
+                title: 'Carro alugado!',
+                message: `Agora você só precisa ir\naté a conscessionária RentX\npara pegar o seu automóvel.`
+            }))
                 .catch(() => {
                     setLoading(false)
                     Alert.alert('Não foi possível confirmar o agendamento');

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useWindowDimensions, StatusBar } from 'react-native';
-import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
+import { useNavigation, NavigationProp, ParamListBase, useRoute } from '@react-navigation/native';
 
 import {
     Container,
@@ -15,12 +15,20 @@ import DoneSvg from '../../assets/done.svg';
 
 import { OkButton } from '../../components/OkButton';
 
-export function ScheduleComplete() {
+interface Params {
+    title: string;
+    message: string;
+    nextScreenRoute: string;
+}
+
+export function Confirmation() {
     const { width } = useWindowDimensions();
     const navigation = useNavigation<NavigationProp<ParamListBase>>();
+    const route = useRoute();
+    const { title, message, nextScreenRoute } = route.params as Params;
 
     function handleRentalDone() {
-        navigation.navigate('Home')
+        navigation.navigate(nextScreenRoute)
     }
     return (
         <Container>
@@ -33,10 +41,8 @@ export function ScheduleComplete() {
 
             <Content>
                 <DoneSvg width={80} height={80} />
-                <Title>Carro alugado!</Title>
-                <Message>Agora você só precisa ir {'\n'}
-                    até a concessionária da RENTX {'\n'}
-                    pegar o seu automóvel.</Message>
+                <Title>{title}</Title>
+                <Message>{message}</Message>
             </Content>
 
             <Footer>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Alert } from 'react-native';
 
+import { Confirmation } from '../../Confirmation';
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
 import { InputPassword } from '../../../components/InputPassword';
@@ -31,7 +32,7 @@ interface Params {
 export function SecondStep() {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const route = useRoute();
 
     const { user } = route.params as Params;
@@ -48,6 +49,12 @@ export function SecondStep() {
         if (password != passwordConfirm) {
             return Alert.alert('As senhas digitadas são diferentes.');
         }
+
+        navigation.navigate('Confirmation', {
+            nextScreenRoute: 'SignIn',
+            title: 'Conta criada!',
+            message: `Agora é só fazer login\ne aproveitar.`
+        });
     }
 
     return (

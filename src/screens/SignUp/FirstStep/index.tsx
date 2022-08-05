@@ -7,6 +7,7 @@ import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
 import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
+import { useAuth } from '../../../hooks/auth';
 
 import {
     Container,
@@ -25,6 +26,8 @@ export function FirstStep() {
     const [driverLicence, setDriverLicence] = useState('')
 
     const navigation = useNavigation<any>();
+    const { user } = useAuth();
+    console.log('Usuário autenticado', user);
 
     function handleGoBack() {
         navigation.goBack();

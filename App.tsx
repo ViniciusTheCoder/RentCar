@@ -8,6 +8,7 @@ import { LogBox } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { ThemeProvider } from 'styled-components/native';
+import { AppProvider } from './src/hooks';
 
 import {
   useFonts,
@@ -49,7 +50,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </GestureHandlerRootView>
     </ThemeProvider>
   );

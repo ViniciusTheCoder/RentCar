@@ -15,6 +15,8 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { InputPassword } from '../../components/InputPassword';
 
+import { useAuth } from '../../hooks/auth';
+
 import theme from '../../styles/theme';
 
 import {
@@ -30,8 +32,9 @@ import {
 export function SignIn() {
     const [email, setEmail] = useState<any>();
     const [password, setPassword] = useState<any>();
+
     const navigation = useNavigation<NavigationProp<ParamListBase>>();
-    const route = useRoute();
+    const { signIn } = useAuth();
 
     async function handleSignIn() {
         try {
@@ -43,7 +46,10 @@ export function SignIn() {
                     .required('Senha obrigatória')
             });
 
-            await schema.validate({ email, password })
+            await schema.validate({ email, password });
+            Alert.alert('Tudo certo!');
+
+            signIn({ email, password });
 
         } catch (error) {
             if (error instanceof Yup.ValidationError) {

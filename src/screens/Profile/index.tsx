@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useAuth } from '../../hooks/auth';
 
+import * as ImagePicker from 'expo-image-picker';
 import { Feather } from '@expo/vector-icons';
 import theme from '../../styles/theme';
 
@@ -30,8 +31,13 @@ import {
     from './styles';
 
 export function Profile() {
-    const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit')
+
     const { user } = useAuth();
+
+    const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
+    const [avatar, setAvatar] = useState(user.avatar);
+    const [name, setName] = useState(user.name);
+    const [driverLicense, setDriverLicense] = useState(user.driver_license);
     const navigation = useNavigation();
 
     function handleGoBack() {
@@ -44,6 +50,23 @@ export function Profile() {
 
     function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
         setOption(optionSelected)
+    }
+
+    async function handleSelectAvatar() {
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 4],
+            quality: 1
+        });
+
+        if (result.cancelled) {
+            return;
+        }
+
+        if (result.uri) {
+            setAvatar(result.uri)
+        }
     }
 
 
@@ -65,8 +88,8 @@ export function Profile() {
                         </HeaderTop>
 
                         <PhotoContainer>
-                            <Photo source={{ uri: 'https://github.com/ViniciusTheCoder.png' }} />
-                            <PhotoButton onPress={() => { }}>
+                            {!!avatar && <Photo source={{ uri: avatar }} />}
+                            <PhotoButton onPress={handleSelectAvatar}>
                                 <Feather
                                     name='camera'
                                     size={24}
@@ -104,6 +127,7 @@ export function Profile() {
                                         placeholder='Nome'
                                         autoCorrect={false}
                                         defaultValue={user.name}
+                                        onChangeText={setName}
                                     />
                                     <Input
                                         iconName='mail'
@@ -115,6 +139,7 @@ export function Profile() {
                                         placeholder='CNH'
                                         keyboardType='numeric'
                                         defaultValue={user.driver_license}
+                                        onChangeText={setDriverLicense}
                                     />
                                 </Section>
                                 :

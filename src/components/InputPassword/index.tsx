@@ -55,6 +55,7 @@ export function InputPassword({
                 onFocus={handleInputFocus}
                 {...rest}
                 isFocused={focused}
+                autoCorrect={false}
             />
 
             <ChangePasswordVisibilityButton onPress={handlePasswordVisibilityChange}>

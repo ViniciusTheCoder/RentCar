@@ -1,9 +1,8 @@
 import { ReactNode } from "react";
 import { FlatList, FlatListProps } from "react-native";
-import { RectButton } from "react-native-gesture-handler";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import { DTO } from '../../dtos/CarDTO';
+import { Car } from '../../database/model/Car';
 
 type CarButton = {
     children: ReactNode
@@ -37,7 +36,7 @@ color: ${({ theme }) => theme.colors.text};
 `;
 
 export const CarList = styled(
-    FlatList as new (props: FlatListProps<DTO>) => FlatList<DTO>
+    FlatList as new (props: FlatListProps<Car>) => FlatList<Car>
 ).attrs({
     contentContainerStyle: {
         padding: 24

@@ -1,7 +1,7 @@
 import React from "react";
 import { RectButtonProps } from "react-native-gesture-handler";
 
-import { DTO } from '../../dtos/CarDTO';
+import { Car as ModelCar } from "../../database/model/Car";
 import { getAcessoryIcon } from "../../utils/getAcessoryIcons";
 
 import {
@@ -19,7 +19,7 @@ import {
 
 
 interface Props extends RectButtonProps {
-    data: DTO
+    data: ModelCar
 }
 
 export function Car({

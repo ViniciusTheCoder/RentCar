@@ -1,4 +1,4 @@
-import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
+import { useIsFocused, useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { StatusBar, FlatList } from 'react-native';
 import { format, parseISO } from 'date-fns';
@@ -9,7 +9,6 @@ import { LoadAnimation } from '../../components/LoadAnimation';
 
 import { Car } from '../../components/Car';
 import { Car as ModelCar } from '../../database/model/Car';
-import { DTO } from '../../dtos/CarDTO';
 import { api } from '../../services/api';
 
 import {
@@ -29,14 +28,6 @@ import {
 }
     from './styles';
 
-interface CarProps {
-    id: string;
-    user_id: string;
-    car: DTO;
-    startDate: string;
-    endDate: string;
-}
-
 interface DataProps {
     id: string;
     car: ModelCar;
@@ -47,6 +38,7 @@ interface DataProps {
 export function MyCars() {
     const [cars, setCars] = useState<DataProps[]>([]);
     const [loading, setIsLoading] = useState(true);
+    const screenIsFocus = useIsFocused();
 
     const navigation = useNavigation<NavigationProp<ParamListBase>>();
 
@@ -56,6 +48,7 @@ export function MyCars() {
                 const response = await api.get('/rentals');
                 const dataFormatted = response.data.map((data: DataProps) => {
                     return {
+                        id: data.id,
                         car: data.car,
                         start_date: format(parseISO(data.start_date), 'dd/MM/yyyy'),
                         end_date: format(parseISO(data.end_date), 'dd/MM/yyyy'),
@@ -69,7 +62,7 @@ export function MyCars() {
             }
         }
         fetchCars()
-    }, [])
+    }, [screenIsFocus]);
 
     function handleBack() {
         navigation.goBack();

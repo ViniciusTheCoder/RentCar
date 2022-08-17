@@ -2,6 +2,8 @@
 
 ## Status: Developing ✔️
 
+- This projected had been developed as part of React-Native Ignite trail from Rocketseat
+
 ## Functions and cool information:
 - I'm currently using' BeKeeper as SQL manager to control new usuary records
 - The goals of this mobile app is rent expansive cars with a few touches on the screen

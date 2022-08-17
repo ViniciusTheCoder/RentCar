@@ -1,6 +1,6 @@
 # RentX 🚗
 
-## Status: Developing ⚙️
+## Status: Developing ✔️
 
 ## Functions and cool information:
 - I'm currently using' BeKeeper as SQL manager to control new usuary records
@@ -9,7 +9,7 @@
 - I've trained React Native Reanimated here, so there's a lot of animation all along the app, enjoy 
 
 ## Warnings⚠️: 
-- You'll need to use JSON server lib to run correctly this application 😊
+- You'll also need to run the API that is in another repository from my profile, check 🤗
 
 In root folder, run: 
 
@@ -29,4 +29,22 @@ yarn
 
 ```javascript
 expo install
+```
+
+You can also run this project using the React-Native CLI by the following commands: 
+
+
+```javascript
+yarn start
+```
+
+
+```javascript
+yarn run android
+```
+
+or
+
+```javascript
+yarn run ios
 ```

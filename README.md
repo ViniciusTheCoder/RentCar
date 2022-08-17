@@ -46,5 +46,9 @@ yarn run android
 or
 
 ```javascript
+yarn start
+```
+
+```javascript
 yarn run ios
 ```

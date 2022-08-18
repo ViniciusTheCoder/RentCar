@@ -1,6 +1,6 @@
 # RentX 🚗
 
-## Status: Developing ✔️
+## Status: Developed ✔️
 
 - This projected had been developed as part of React-Native Ignite trail from Rocketseat
 
